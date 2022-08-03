@@ -4,7 +4,7 @@
     <img src="docs/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h2 align="center">Fluxo Ágil</h2>
+  <h2 align="center">Fluxo Ágil Web</h2>
 
   <p align="center">
     Saiba qual é o fluxo de disciplinas mais rápido para você se formar na UnB!
@@ -18,10 +18,14 @@
   </p>
 </div>
 
-# Fluxo Ágil Web
+# Sobre o Fluxo Ágil Web
 
-Repositório para o frontend do Fluxo Ágil. Esse projeto usa React +
-TypeScript, Vite e Material UI.
+Fluxo Ágil é um aplicativo que recomenda um fluxo de disciplinas 
+para estudantes de graduação da Universidade de Brasília baseado
+em seu histórico acadêmico.
+
+Esse repositório serve hospedar o código fonte do frontend do 
+Fluxo Ágil. Esse projeto usa React + TypeScript, Vite e Material UI.
 
 ## Montar ambiente de desenvolvimento
 
