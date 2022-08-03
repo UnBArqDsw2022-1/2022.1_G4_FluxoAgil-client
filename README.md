@@ -18,7 +18,7 @@
   </p>
 </div>
 
-# Sobre o Fluxo Ágil Web
+## Sobre o Fluxo Ágil Web
 
 Fluxo Ágil é um aplicativo que recomenda um fluxo de disciplinas 
 para estudantes de graduação da Universidade de Brasília baseado
