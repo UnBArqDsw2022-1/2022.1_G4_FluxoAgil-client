@@ -21,12 +21,17 @@ function App() {
         </a>
       </div>
       <h1>Fluxo Ágil</h1>
+      <h3>
+        Em breve você terá a experiência mais agradável de recomendação
+        de disciplinas da UnB
+      </h3>
       <div className="card">
-        <p>Esse é o número de semestres que faltam pra você se formar</p>
+        <p>Enquanto isso, brinque com o botão:</p>
         <Button variant="contained" onClick={() => setCount(count + 1)}>
-          Semestres:
-          {count}
+          Este botão clicado {count} vezes
         </Button>
+
+        <p>Saiba mais clicnado <a href="https://unbarqdsw2022-1.github.io/2022.1_G4_FluxoAgil/">aqui</a>.</p>
       </div>
     </div>
   )
