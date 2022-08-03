@@ -22,6 +22,7 @@ module.exports = {
   rules: {
     semi: ['error', 'never'],
     'import/prefer-default-export': 'off',
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['vite.config.ts'] }],
     'react/prop-types': 'off',
     'react/function-component-definition': 'off',
     'react/react-in-jsx-scope': 'off',
