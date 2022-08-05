@@ -10,8 +10,16 @@ function App() {
   return (
     <div className="App">
       <div>
-        <a href="https://github.com/UnBArqDsw2022-1/2022.1_G4_FluxoAgil-web" target="_blank" rel="noreferrer">
-          <img src={fluxoAgilLogo} className="logo react" alt="Logo fluxo agil" />
+        <a
+          href="https://github.com/UnBArqDsw2022-1/2022.1_G4_FluxoAgil-web"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <img
+            src={fluxoAgilLogo}
+            className="logo react"
+            alt="Logo fluxo agil"
+          />
         </a>
         <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
           <img src="/vite.svg" className="logo" alt="Vite logo" />
@@ -22,8 +30,8 @@ function App() {
       </div>
       <h1>Fluxo Ágil</h1>
       <h3>
-        Em breve você terá a experiência mais agradável de recomendação
-        de disciplinas da UnB
+        Em breve você terá a experiência mais agradável de recomendação de
+        disciplinas da UnB
       </h3>
       <div className="card">
         <p>Enquanto isso, brinque com o botão:</p>
@@ -31,7 +39,13 @@ function App() {
           Este botão clicado {count} vezes
         </Button>
 
-        <p>Saiba mais clicnado <a href="https://unbarqdsw2022-1.github.io/2022.1_G4_FluxoAgil/">aqui</a>.</p>
+        <p>
+          Saiba mais clicando{' '}
+          <a href="https://unbarqdsw2022-1.github.io/2022.1_G4_FluxoAgil/">
+            aqui
+          </a>
+          .
+        </p>
       </div>
     </div>
   )
