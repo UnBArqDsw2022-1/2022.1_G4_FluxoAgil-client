@@ -9,12 +9,13 @@ import {
 import React, { createRef, useState, RefObject, useEffect } from 'react';
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import { FileCopy } from '@mui/icons-material';
-import ButtonComponent from '../ButtonComponent';
+// eslint-disable-next-line import/no-unresolved
+import ButtonComponent from 'components/ButtonComponent';
 
 const acceptedTypes = ['.pdf'];
 
 interface UploadComponentProps {
-  onFileSelected: undefined | ((f: any) => void);
+  onFileSelected: undefined | ((file: File | null) => void);
 }
 
 export default function UploadComponent({
@@ -26,7 +27,7 @@ export default function UploadComponent({
   } as { type: string | null; text: string | null });
   const [fileHovering, setFileHovering] = useState(false);
   const fileInputRef: RefObject<HTMLInputElement> = createRef();
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   useEffect(() => {
     if (selectedFile !== null) {
