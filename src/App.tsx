@@ -1,6 +1,8 @@
 import { Box, Container } from '@mui/material'
-import Guide from './components/Guide'
+
 import Header from './components/Header'
+import UploadComponent from './components/UploadComponent'
+import Guide from './components/Guide'
 
 function App() {
   return (
@@ -8,6 +10,8 @@ function App() {
       <Header />
 
       <Container>
+        <UploadComponent onFileSelected={() => null} />
+
         <Guide />
       </Container>
     </Box>
