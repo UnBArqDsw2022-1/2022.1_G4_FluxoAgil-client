@@ -11,6 +11,16 @@ const theme = createTheme({
       contrastText: 'white',
     },
   },
+
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+        },
+      },
+    },
+  },
 })
 
 export default theme
