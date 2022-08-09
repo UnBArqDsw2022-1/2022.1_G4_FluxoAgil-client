@@ -4,6 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: [
+    'eslint:all',
     'plugin:react/recommended',
     'airbnb',
     'prettier',
@@ -33,11 +34,23 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-one-expression-per-line': ['off'],
     'no-plusplus': 'off',
+    'import/extensions': [
+      'error',
+      {
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
     'react/jsx-filename-extension': [
       1,
       {
         extensions: ['.tsx'],
       },
     ],
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
   },
 }
