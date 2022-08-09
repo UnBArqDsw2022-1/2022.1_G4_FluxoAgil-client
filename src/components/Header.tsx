@@ -1,9 +1,15 @@
-import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
-import Button from "./Button";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  Toolbar,
+  Typography,
+} from '@mui/material'
 
 export default function Header() {
   return (
-    <AppBar>
+    <AppBar elevation={0}>
       <Container>
         <Toolbar>
           <Box width="100%" display="flex">
@@ -14,16 +20,19 @@ export default function Header() {
 
           <Box display="flex">
             <Button
+              color="secondary"
               href="https://github.com/UnBArqDsw2022-1/2022.1_G4_FluxoAgil"
               target="_blank"
             >
               Docs
             </Button>
 
-            <Button disabled>Sobre</Button>
+            <Button color="secondary" disabled>
+              Sobre
+            </Button>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
