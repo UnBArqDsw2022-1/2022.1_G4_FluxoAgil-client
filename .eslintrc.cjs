@@ -22,7 +22,7 @@ module.exports = {
   },
   plugins: ['react', 'prettier', '@typescript-eslint'],
   rules: {
-    // semi: ['error', 'never'],
+    semi: ['error', 'never'],
     'prettier/prettier': ['error'],
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': [
