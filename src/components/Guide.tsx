@@ -3,24 +3,24 @@ import { Box, Grid, Typography } from '@mui/material'
 export default function Guide() {
   const items = [
     {
-      title: 'Título',
+      title: 'Como funciona?',
       content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae doloribus iste repellat fugit et, explicabo eos? Dicta expedita dolore modi sint accusamus eos, iure accusantium iste facere soluta porro autem?',
+        'O Fluxo Ágil oferece, aos estudantes da Universidade de Brasília, uma recomendação de quais disciplinas cursar nos próximos semestres para que você se forme no menor tempo possível seguindo a quantidade de créditos que deseja cursar.',
     },
     {
-      title: 'b',
+      title: 'Como obter seu histórico?',
       content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae doloribus iste repellat fugit et, explicabo eos? Dicta expedita dolore modi sint accusamus eos, iure accusantium iste facere soluta porro autem?',
+        'Para utilizar a plataforma, primeiramente é necessário fazer a emissão de seu histórico pelo siga no menu de ensino. Após fazer a emissão, é preciso submeter seu histórico na plataforma e será identificado todas as disciplinas que você ainda precisa fazer. Em seguida, basta escolher quantos créditos você deseja realizar nos próximos semestre e pronto! O sistema realizará a recomendação de matérias para os próximos semestres.',
     },
     {
-      title: 'b',
+      title: 'Como é calculado?',
       content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae doloribus iste repellat fugit et, explicabo eos? Dicta expedita dolore modi sint accusamus eos, iure accusantium iste facere soluta porro autem?',
+        'Para fazer o cálculo da recomendação de matrícula, primeiramente é identificado todas as disciplinas obrigatórias que o aluno ainda precisa fazer, em seguida, nosso algoritmo calcula quais disciplinas ele precisa cursar em cada semestre para se formar no menor tempo possível.',
     },
     {
-      title: 'b',
+      title: 'Como eu uso?',
       content:
-        'Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae doloribus iste repellat fugit et, explicabo eos? Dicta expedita dolore modi sint accusamus eos, iure accusantium iste facere soluta porro autem?',
+        'Para fazer a utilização do nosso app é super fácil, você precisará colocar o seu histórico na página inicial e após isso você irá colocar quantos créditos quer cursar no semestre e depois selecionar optativas que deseja cursar. Agora é só clicar no botão de processar e você verá quais são as disciplinas que o Fluxo Ágil recomendou para você.',
     },
   ]
 
