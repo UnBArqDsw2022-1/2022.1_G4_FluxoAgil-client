@@ -9,7 +9,7 @@ import {
 
 export default function Header() {
   return (
-    <AppBar elevation={0}>
+    <AppBar elevation={0} position="sticky">
       <Container>
         <Toolbar>
           <Box width="100%" display="flex">
