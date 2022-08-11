@@ -21,6 +21,20 @@ const theme = createTheme({
       },
     },
   },
+
+  typography: {
+    h2: {
+      fontFamily: 'Rubik',
+      fontSize: '20px',
+      fontWeight: '600',
+    },
+
+    body1: {
+      fontFamily: 'Inter',
+      fontSize: '16px',
+      fontWeight: '300',
+    },
+  },
 })
 
 export default theme
