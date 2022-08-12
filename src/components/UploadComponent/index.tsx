@@ -156,7 +156,7 @@ export default function UploadComponent({
         alignItems="center"
         justifyContent="center"
         style={{
-          background: fileHovering ? '#f5f5f5' : '#fff',
+          background: fileHovering ? '#f5f5f5' : '#FFFFFF',
           opacity: fileHovering ? 0.8 : 1,
         }}
         sx={{
