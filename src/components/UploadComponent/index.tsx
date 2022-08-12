@@ -5,13 +5,14 @@ import {
   Typography,
   Link,
   Box,
+  CssBaseline,
 } from '@mui/material'
 import React, { createRef, useState, RefObject, useEffect } from 'react'
-import FileUploadIcon from '@mui/icons-material/FileUpload'
 import { FileCopy } from '@mui/icons-material'
 import ButtonComponent from '../ButtonComponent'
+import theme from '../../utilities/theme'
 
-const acceptedTypes = ['.pdf']
+const acceptedTypes = ['.pdf', 'application/pdf']
 
 interface UploadComponentProps {
   onFileSelected: undefined | ((file: File | null) => void)
@@ -73,17 +74,19 @@ export default function UploadComponent({
     if (files.length < 1) {
       setMessage({ type: 'erro', text: 'Falha ao obter o arquivo' })
     }
+
     const itemType = files[0].type
 
     if (itemType && !acceptedTypes.includes(itemType)) {
       setMessage({
         type: 'error',
-        text: 'Tipo de arquivo não suportado. Selecione um docx válido.',
+        text: 'Tipo de arquivo não suportado. Selecione um pdf válido.',
       })
     }
   }
 
   const handleDragExit = (e: any) => {
+    console.log('handleDragExit')
     setFileHovering(false)
     e.preventDefault()
     clearMessage()
@@ -124,7 +127,7 @@ export default function UploadComponent({
     if (itemType && !acceptedTypes.includes(itemType)) {
       setMessage({
         type: 'error',
-        text: 'Tipo de arquivo não suportado. Selecione um docx válido.',
+        text: 'Tipo de arquivo não suportado. Selecione um pdf válido.',
       })
     }
 
@@ -142,11 +145,10 @@ export default function UploadComponent({
   }
 
   return (
-    // <ThemeProvider theme={ }>
-    <Container component="main">
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
       <Grid
         container
-        spacing={3}
         direction="column"
         alignItems="center"
         justifyContent="center"
@@ -156,41 +158,47 @@ export default function UploadComponent({
           opacity: fileHovering ? 0.8 : 1,
         }}
         sx={{
-          width: '100%',
-          minHeight: '200px',
-          padding: {
-            xs: 0,
-            sm: '1px',
-          },
+          width: '80vw',
+          maxWidth: '900px',
+          minHeight: '300px',
+          border: '2px dashed #0CABA8',
         }}
         onDragOver={handleDragStart}
         onDragExit={handleDragExit}
         onDrop={handleDropCapture}
-        onClick={handleDragAreaClick}
       >
         {!selectedFile && (
           <>
             {!fileHovering && (
               <Grid item xs={12}>
                 <ButtonComponent
-                  icon={<FileUploadIcon />}
-                  label="Enviar Histórico"
-                  onClick={() => {
-                    console.log('click')
-                  }}
+                  isUpload
+                  label="Selecionar Histórico"
+                  onClick={handleDragAreaClick}
                   variant="contained"
+                  color="secondary"
                 />
-                <Typography variant="body1">
-                  ou
+                <Typography variant="body1" marginTop={1}>
+                  Ou{' '}
                   <Link href="selectCourses">
-                    {' '}
-                    Selecione suas matérias manualmente.
+                    selecionar disciplinas já cursadas.
                   </Link>
                 </Typography>
               </Grid>
             )}
             {fileHovering && (message.text ? message.text : <FileCopy />)}
           </>
+        )}
+        {selectedFile && (
+          <Grid item>
+            <Typography>{JSON.stringify(selectedFile.name)}</Typography>
+            <ButtonComponent
+              isUpload
+              label="Selecionar outro arquivo"
+              onClick={handleDragAreaClick}
+              variant="outlined"
+            />
+          </Grid>
         )}
       </Grid>
       <Box display="none">
@@ -203,7 +211,6 @@ export default function UploadComponent({
           />
         </form>
       </Box>
-    </Container>
-    // </ThemeProvider>
+    </ThemeProvider>
   )
 }

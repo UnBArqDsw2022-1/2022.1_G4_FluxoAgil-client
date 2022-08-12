@@ -1,5 +1,13 @@
 import { createTheme } from '@mui/material/styles'
 
+const colors = {
+  'green-1': '#0FC2C0',
+  'green-2': '#0CABA8',
+  'green-3': '#008F8C',
+  'green-4': '#015958',
+  'green-5': '#023535',
+}
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -17,6 +25,13 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           textTransform: 'none',
+        },
+      },
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: colors['green-3'],
         },
       },
     },

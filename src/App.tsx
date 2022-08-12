@@ -10,7 +10,11 @@ function App() {
       <Header />
 
       <Container>
-        <UploadComponent onFileSelected={() => null} />
+        <UploadComponent
+          onFileSelected={() => {
+            return ''
+          }}
+        />
 
         <Guide />
       </Container>
