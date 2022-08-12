@@ -13,7 +13,7 @@ import theme from '../../utilities/theme'
 interface Props {
   isUpload: boolean
   label: string
-  onClick: () => void
+  onClick: (e: any) => void
   variant?: 'contained' | 'outlined' | 'text'
   color?: 'primary' | 'secondary'
 }

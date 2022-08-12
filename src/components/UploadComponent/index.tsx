@@ -42,9 +42,9 @@ export default function UploadComponent({
   }
 
   function handleInputSelectFile(e: any) {
-    if (e.target.files.length < 1) {
-      setSelectedFile(e.target.files[0])
-    }
+    if (e.target.files.length < 1) return
+
+    setSelectedFile(e.target.files[0])
   }
 
   const handleDragStart = (ev: any) => {
@@ -77,7 +77,7 @@ export default function UploadComponent({
 
     const itemType = files[0].type
 
-    if (itemType && !acceptedTypes.includes(itemType)) {
+    if ((itemType && !acceptedTypes.includes(itemType)) || itemType === '') {
       setMessage({
         type: 'error',
         text: 'Tipo de arquivo não suportado. Selecione um pdf válido.',
@@ -86,14 +86,9 @@ export default function UploadComponent({
   }
 
   const handleDragExit = (e: any) => {
-    console.log('handleDragExit')
     setFileHovering(false)
     e.preventDefault()
     clearMessage()
-  }
-
-  const handleDragAreaClick = () => {
-    fileInputRef!.current!.click()
   }
 
   const handleDropCapture = (ev: any) => {
@@ -104,7 +99,10 @@ export default function UploadComponent({
 
     if (ev.dataTransfer.items) {
       for (let i = 0; i < ev.dataTransfer.items.length; i++) {
-        if (ev.dataTransfer.items[i].kind === 'file') {
+        if (
+          ev.dataTransfer.items[i].kind === 'file' &&
+          acceptedTypes.includes(ev.dataTransfer.items[i].type)
+        ) {
           const file = ev.dataTransfer.items[i]
           files.push(file)
         }
@@ -121,6 +119,7 @@ export default function UploadComponent({
         type: 'error',
         text: 'Falha ao obter arquivo',
       })
+      return
     }
 
     const itemType = files[0].type
@@ -144,6 +143,10 @@ export default function UploadComponent({
     setSelectedFile(f)
   }
 
+  const handleDragAreaClick = (e: any) => {
+    fileInputRef!.current!.click()
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -152,7 +155,6 @@ export default function UploadComponent({
         direction="column"
         alignItems="center"
         justifyContent="center"
-        borderRadius={2}
         style={{
           background: fileHovering ? '#f5f5f5' : '#fff',
           opacity: fileHovering ? 0.8 : 1,
@@ -162,9 +164,10 @@ export default function UploadComponent({
           maxWidth: '900px',
           minHeight: '300px',
           border: '2px dashed #0CABA8',
+          borderRadius: '5px',
         }}
         onDragOver={handleDragStart}
-        onDragExit={handleDragExit}
+        onDragLeave={handleDragExit}
         onDrop={handleDropCapture}
       >
         {!selectedFile && (
@@ -190,14 +193,28 @@ export default function UploadComponent({
           </>
         )}
         {selectedFile && (
-          <Grid item>
-            <Typography>{JSON.stringify(selectedFile.name)}</Typography>
-            <ButtonComponent
-              isUpload
-              label="Selecionar outro arquivo"
-              onClick={handleDragAreaClick}
-              variant="outlined"
-            />
+          <Grid container justifyContent="center">
+            <Grid item xs={12} marginBottom={2}>
+              <Typography>{JSON.stringify(selectedFile.name)}</Typography>
+            </Grid>
+            <Grid item xs={4}>
+              <ButtonComponent
+                isUpload
+                label="Enviar este arquivo"
+                onClick={handleDragAreaClick}
+                variant="contained"
+                color="secondary"
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <ButtonComponent
+                isUpload
+                label="Selecionar outro arquivo"
+                onClick={handleDragAreaClick}
+                variant="outlined"
+                color="secondary"
+              />
+            </Grid>
           </Grid>
         )}
       </Grid>
