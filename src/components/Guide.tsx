@@ -2,24 +2,24 @@ import { Box, Grid, Typography } from '@mui/material'
 
 const items = [
   {
-    title: 'Como funciona?',
+    title: 'O que é?',
     content:
-      'O Fluxo Ágil oferece, aos estudantes da Universidade de Brasília, uma recomendação de quais disciplinas cursar nos próximos semestres para que você se forme no menor tempo possível seguindo a quantidade de créditos que deseja cursar.',
+      'O Fluxo Ágil oferece aos estudantes da Universidade de Brasília uma recomendação de quais disciplinas cursar nos próximos semestres para <strong>se formarem no menor tempo possível</strong>.',
   },
   {
-    title: 'Como obter seu histórico?',
+    title: 'Como utilizar?',
     content:
-      'Para utilizar a plataforma, primeiramente é necessário fazer a emissão de seu histórico pelo siga no menu de ensino. Após fazer a emissão, é preciso submeter seu histórico na plataforma e será identificado todas as disciplinas que você ainda precisa fazer. Em seguida, basta escolher quantos créditos você deseja realizar nos próximos semestre e pronto! O sistema realizará a recomendação de matérias para os próximos semestres.',
+      'Basta enviar seu <strong>histórico acadêmico</strong> e selecionar as opções desejadas, como quantidade de créditos por semestre, optativas etc.',
+  },
+  {
+    title: 'Como obter o histórico?',
+    content:
+      'O histórico acadêmico está disponível no SIGAA. Ao abrir o menu <i>Ensino</i>, clique em <i>Emitir histórico</i> para fazer o downlaod do arquivo.',
   },
   {
     title: 'Como é calculado?',
     content:
-      'Para fazer o cálculo da recomendação de matrícula, primeiramente é identificado todas as disciplinas obrigatórias que o aluno ainda precisa fazer, em seguida, nosso algoritmo calcula quais disciplinas ele precisa cursar em cada semestre para se formar no menor tempo possível.',
-  },
-  {
-    title: 'Como eu uso?',
-    content:
-      'Para fazer a utilização do nosso app é super fácil, você precisará colocar o seu histórico na página inicial e após isso você irá colocar quantos créditos quer cursar no semestre e depois selecionar optativas que deseja cursar. Agora é só clicar no botão de processar e você verá quais são as disciplinas que o Fluxo Ágil recomendou para você.',
+      'A recomendação é feita através de um modelo de programação linear que analisa vários possíveis fluxos e seleciona o que leva menos semestres para ser concluído.',
   },
 ]
 
@@ -32,7 +32,10 @@ export default function Guide() {
             <Typography variant="h2">{item.title}</Typography>
           </Box>
 
-          <Typography variant="body1">{item.content}</Typography>
+          <Typography
+            variant="body1"
+            dangerouslySetInnerHTML={{ __html: item.content }}
+          />
         </Grid>
       ))}
     </Grid>
