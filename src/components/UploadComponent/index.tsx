@@ -148,8 +148,7 @@ export default function UploadComponent({
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <>
       <Grid
         container
         direction="column"
@@ -160,8 +159,6 @@ export default function UploadComponent({
           opacity: fileHovering ? 0.8 : 1,
         }}
         sx={{
-          width: '80vw',
-          maxWidth: '900px',
           minHeight: '300px',
           border: '2px dashed #0CABA8',
           borderRadius: '5px',
@@ -218,6 +215,7 @@ export default function UploadComponent({
           </Grid>
         )}
       </Grid>
+
       <Box display="none">
         <form>
           <input
@@ -228,6 +226,6 @@ export default function UploadComponent({
           />
         </form>
       </Box>
-    </ThemeProvider>
+    </>
   )
 }
