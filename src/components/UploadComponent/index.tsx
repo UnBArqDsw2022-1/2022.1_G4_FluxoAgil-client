@@ -1,16 +1,7 @@
-import {
-  Grid,
-  Container,
-  ThemeProvider,
-  Typography,
-  Link,
-  Box,
-  CssBaseline,
-} from '@mui/material'
-import React, { createRef, useState, RefObject, useEffect } from 'react'
+import { Grid, Typography, Link, Box } from '@mui/material'
+import { createRef, useState, RefObject, useEffect } from 'react'
 import { FileCopy } from '@mui/icons-material'
 import ButtonComponent from '../ButtonComponent'
-import theme from '../../utilities/theme'
 
 const acceptedTypes = ['.pdf', 'application/pdf']
 
@@ -171,17 +162,20 @@ export default function UploadComponent({
           <>
             {!fileHovering && (
               <Grid item xs={12}>
-                <ButtonComponent
-                  isUpload
-                  label="Selecionar Histórico"
-                  onClick={handleDragAreaClick}
-                  variant="contained"
-                  color="secondary"
-                />
+                <Box width="100%" display="flex" justifyContent="center">
+                  <ButtonComponent
+                    isUpload
+                    label="Selecionar histórico"
+                    onClick={handleDragAreaClick}
+                    variant="contained"
+                    color="secondary"
+                  />
+                </Box>
+
                 <Typography variant="body1" marginTop={1}>
                   Ou{' '}
                   <Link href="selectCourses">
-                    selecionar disciplinas já cursadas.
+                    selecionar disciplinas já cursadas
                   </Link>
                 </Typography>
               </Grid>
@@ -191,7 +185,13 @@ export default function UploadComponent({
         )}
         {selectedFile && (
           <Grid container justifyContent="center">
-            <Grid item xs={12} marginBottom={2}>
+            <Grid
+              item
+              xs={12}
+              marginBottom={2}
+              display="flex"
+              justifyContent="center"
+            >
               <Typography>{JSON.stringify(selectedFile.name)}</Typography>
             </Grid>
             <Grid item xs={4}>

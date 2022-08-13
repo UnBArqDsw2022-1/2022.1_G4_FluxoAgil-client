@@ -9,14 +9,18 @@ function App() {
     <Box height="100vh">
       <Header />
 
-      <Container>
-        <UploadComponent
-          onFileSelected={() => {
-            return ''
-          }}
-        />
+      <Container maxWidth="md">
+        <Box py={3}>
+          <UploadComponent
+            onFileSelected={() => {
+              return ''
+            }}
+          />
+        </Box>
 
-        <Guide />
+        <Box py={3}>
+          <Guide />
+        </Box>
       </Container>
     </Box>
   )
