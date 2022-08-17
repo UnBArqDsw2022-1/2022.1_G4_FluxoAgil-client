@@ -25,9 +25,9 @@ const items = [
 
 export default function Guide() {
   return (
-    <Grid container spacing={4} display="flex" justifyContent="center">
+    <Grid py={5} container spacing={4} display="flex" justifyContent="center">
       {items.map(item => (
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} key={item.title}>
           <Box pb={2}>
             <Typography variant="h2">{item.title}</Typography>
           </Box>
