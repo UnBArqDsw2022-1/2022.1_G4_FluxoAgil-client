@@ -1,8 +1,8 @@
 import { Box, Container } from '@mui/material'
 
-import Header from './components/Header'
-import Guide from './components/Guide'
-import UploadArea from './components/UploadArea'
+import Header from '@/components/Header'
+import Guide from '@/components/Guide'
+import UploadArea from '@/components/UploadArea'
 
 function App() {
   return (
