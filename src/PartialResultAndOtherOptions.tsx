@@ -1,7 +1,7 @@
 import { Button, Grid, Link, Typography } from '@mui/material'
 import SelectOptionalCoursesModal from './components/SelectOptionalCoursesModal'
 
-export default function PartialResult() {
+export default function PartialResultAndOtherOptions() {
   return (
     <Grid
       container

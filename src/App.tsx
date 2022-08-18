@@ -3,7 +3,7 @@ import { Box, Container } from '@mui/material'
 import Header from './components/Header'
 import UploadComponent from './components/UploadComponent'
 import Guide from './components/Guide'
-import PartialResult from './PartialResult'
+import PartialResultAndOtherOptions from './PartialResultAndOtherOptions'
 
 function App() {
   const appState = 'partial-result'
@@ -14,7 +14,7 @@ function App() {
       <Container maxWidth="md">
         <Box py={3}>
           {appState === 'partial-result' ? (
-            <PartialResult />
+            <PartialResultAndOtherOptions />
           ) : (
             <UploadComponent
               onFileSelected={() => {
