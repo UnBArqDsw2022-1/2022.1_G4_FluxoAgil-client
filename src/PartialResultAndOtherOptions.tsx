@@ -1,7 +1,17 @@
 import { Button, Grid, Link, Typography } from '@mui/material'
+import { useState } from 'react'
+import { OptionalCourse } from './app_types'
 import SelectOptionalCoursesModal from './components/SelectOptionalCoursesModal'
 
 export default function PartialResultAndOtherOptions() {
+  const [selectedOptionalCourses, setSelectedOptionalCourses] = useState<
+    OptionalCourse[]
+  >([])
+  const [
+    isSelectOptionalCoursesModalOpen,
+    setIsSelectOptionalCoursesModalOpen,
+  ] = useState(false)
+
   return (
     <Grid
       container
@@ -26,17 +36,26 @@ export default function PartialResultAndOtherOptions() {
         <Typography>Ainda faltam 30h em optativas</Typography>
         <Typography variant="body1">
           {/* Esse era pra ser um botão? */}
-          <Button>Selecionar as disciplinas optativas</Button>
-          <br />
-          <Link href="editSelectedCourses">
+          <Button onClick={() => setIsSelectOptionalCoursesModalOpen(true)}>
             Selecionar as disciplinas optativas
-          </Link>
+          </Button>
         </Typography>
 
         {/* Restante dos inputs */}
+        {selectedOptionalCourses.map(course => (
+          <p key={course.label}>
+            {course.label} ({course.workloadInHours})
+          </p>
+        ))}
       </Grid>
 
-      <SelectOptionalCoursesModal open />
+      <SelectOptionalCoursesModal
+        curriculaeId="6362/01"
+        open={isSelectOptionalCoursesModalOpen}
+        handleClose={() => setIsSelectOptionalCoursesModalOpen(false)}
+        selectedOptionalCourses={selectedOptionalCourses}
+        setSelectedOptionalCourses={setSelectedOptionalCourses}
+      />
     </Grid>
   )
 }
