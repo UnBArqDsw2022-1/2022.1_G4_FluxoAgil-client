@@ -1,7 +1,11 @@
-import React, { DragEvent, useState } from 'react'
+import React, { DragEvent, useEffect, useState } from 'react'
 import { Box, Button, Typography } from '@mui/material'
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined'
+import {
+  useFetchAcademicHistoryDataMutation,
+  useGetPokemonByNameQuery,
+} from '@/api'
 
 const ErrorMessage = () => (
   <Typography>
@@ -14,6 +18,22 @@ export default function UploadArea() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [shouldShowError, setShouldShowError] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
+  // const { data, error } = useGetPokemonByNameQuery(selectedFile, {
+  //   skip: !Boolean(selectedFile),
+  // })
+  const [fetchAcademicHistory, result] = useFetchAcademicHistoryDataMutation()
+
+  useEffect(() => {
+    if (!selectedFile) {
+      return
+    }
+
+    fetchAcademicHistory(selectedFile)
+  }, [selectedFile])
+
+  useEffect(() => {
+    console.log(result)
+  }, [result])
 
   const isValidDraggedFile = (items: DataTransferItemList) => {
     if (items.length !== 1 || items[0].type !== 'application/pdf') {
