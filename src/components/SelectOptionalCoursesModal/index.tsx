@@ -88,10 +88,14 @@ export default function SelectOptionalCoursesModal({
         />
 
         <Grid container justifyContent="space-between" mt="64px">
-          <Button onClick={handleClose} variant="outlined" color="secondary">
-            Cancelar
+          <Button
+            onClick={() => setSelectedOptionalCourses([])}
+            variant="outlined"
+            color="secondary"
+          >
+            Limpar
           </Button>
-          <Button variant="contained" color="secondary">
+          <Button onClick={handleClose} variant="contained" color="secondary">
             Salvar
           </Button>
         </Grid>
