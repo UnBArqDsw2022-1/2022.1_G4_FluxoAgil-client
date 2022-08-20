@@ -43,7 +43,7 @@ export default function SelectOptionalCoursesModal({
   }, [])
 
   return (
-    <Modal open={open}>
+    <Modal open={open} disableEnforceFocus onClose={handleClose}>
       <Box
         sx={{
           position: 'absolute',
