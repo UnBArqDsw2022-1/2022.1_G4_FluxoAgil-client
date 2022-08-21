@@ -2,7 +2,7 @@ import { recommendationApi } from '@/api'
 import { configureStore } from '@reduxjs/toolkit'
 import recommendation from './recommendation'
 
-const store = configureStore({
+export default configureStore({
   reducer: {
     recommendation,
     [recommendationApi.reducerPath]: recommendationApi.reducer,
@@ -10,7 +10,3 @@ const store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(recommendationApi.middleware),
 })
-
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
-export default store

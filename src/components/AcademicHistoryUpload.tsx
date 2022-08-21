@@ -29,9 +29,11 @@ export default function UploadArea() {
   }, [selectedFile])
 
   useEffect(() => {
-    if (data) {
-      dispatch(setAcademicHistoryData({ approvedCourses: data }))
+    if (!data) {
+      return
     }
+
+    dispatch(setAcademicHistoryData({ approvedCourses: data }))
   }, [data])
 
   const isValidDraggedFile = (items: DataTransferItemList) => {
