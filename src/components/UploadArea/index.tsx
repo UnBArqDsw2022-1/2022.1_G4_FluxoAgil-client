@@ -3,6 +3,8 @@ import { Box, Button, Typography } from '@mui/material'
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined'
 import { useFetchAcademicHistoryDataMutation } from '@/api'
+import { useDispatch } from 'react-redux'
+import { setAcademicHistoryData } from '@/store/recommendation'
 
 const ErrorMessage = () => (
   <Typography>
@@ -11,12 +13,12 @@ const ErrorMessage = () => (
 )
 
 export default function UploadArea() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const dispatch = useDispatch()
+  const [fetchAcademicHistory, { data }] = useFetchAcademicHistoryDataMutation()
+
   const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const [shouldShowError, setShouldShowError] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
-
-  const [fetchAcademicHistory, response] = useFetchAcademicHistoryDataMutation()
 
   useEffect(() => {
     if (!selectedFile) {
@@ -27,10 +29,10 @@ export default function UploadArea() {
   }, [selectedFile])
 
   useEffect(() => {
-    if (response.data) {
-      console.log(response.data)
+    if (data) {
+      dispatch(setAcademicHistoryData({ approvedCourses: data }))
     }
-  }, [response])
+  }, [data])
 
   const isValidDraggedFile = (items: DataTransferItemList) => {
     if (items.length !== 1 || items[0].type !== 'application/pdf') {

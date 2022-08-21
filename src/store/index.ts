@@ -2,9 +2,7 @@ import { recommendationApi } from '@/api'
 import { configureStore } from '@reduxjs/toolkit'
 import recommendation from './recommendation'
 
-// https://www.freecodecamp.org/news/how-to-manage-state-in-a-react-app/
-
-export default configureStore({
+const store = configureStore({
   reducer: {
     recommendation,
     [recommendationApi.reducerPath]: recommendationApi.reducer,
@@ -12,3 +10,7 @@ export default configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(recommendationApi.middleware),
 })
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+export default store

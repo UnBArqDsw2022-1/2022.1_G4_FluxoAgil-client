@@ -1,4 +1,6 @@
-import { createSlice } from '@reduxjs/toolkit'
+/* eslint-disable no-param-reassign */
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { RootState } from '@/store'
 
 interface AcademicHistoryWorkload {
   required: number
@@ -29,12 +31,15 @@ export const recommendationSlice = createSlice({
   name: 'recommendation',
   initialState,
   reducers: {
-    getAcademicHistoryData: () => {
-      //   state.academicHistory = something
+    setAcademicHistoryData: (state, action) => {
+      state.academicHistory = action.payload
     },
   },
 })
 
-export const { getAcademicHistoryData } = recommendationSlice.actions
+export const { setAcademicHistoryData } = recommendationSlice.actions
 
 export default recommendationSlice.reducer
+
+export const selectAcademicHistory = (state: RootState) =>
+  state.recommendation.academicHistory
