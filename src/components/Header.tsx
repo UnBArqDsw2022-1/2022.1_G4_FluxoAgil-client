@@ -14,7 +14,7 @@ export default function Header() {
         <Toolbar>
           <Box width="100%" display="flex">
             <Typography>
-              <Box fontWeight="bold">Fluxo Ágil</Box>
+              <strong>Fluxo Ágil</strong>
             </Typography>
           </Box>
 

@@ -8,6 +8,19 @@ const colors = {
   'green-5': '#023535',
 }
 
+const typography = {
+  h2: {
+    fontFamily: 'Rubik',
+    fontSize: '1.25rem',
+    fontWeight: '600',
+  },
+  body1: {
+    fontFamily: 'Inter',
+    fontSize: '1rem',
+    fontWeight: '400',
+  },
+}
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -23,9 +36,14 @@ const theme = createTheme({
   components: {
     MuiButton: {
       styleOverrides: {
-        root: {
+        root: ({ ownerState }) => ({
           textTransform: 'none',
-        },
+          ...typography.body1,
+          ...(ownerState.variant === 'text' &&
+            ownerState.color === 'primary' && {
+              color: colors['green-3'],
+            }),
+        }),
       },
     },
     MuiLink: {
@@ -37,19 +55,7 @@ const theme = createTheme({
     },
   },
 
-  typography: {
-    h2: {
-      fontFamily: 'Rubik',
-      fontSize: '20px',
-      fontWeight: '600',
-    },
-
-    body1: {
-      fontFamily: 'Inter',
-      fontSize: '16px',
-      fontWeight: '300',
-    },
-  },
+  typography,
 })
 
 export default theme
