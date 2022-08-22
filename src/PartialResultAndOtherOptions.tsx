@@ -1,6 +1,6 @@
 import { Button, Grid, Link, Typography } from '@mui/material'
 import { useState } from 'react'
-import { OptionalCourse } from './app_types'
+import { OptionalCourse } from '@/types'
 import SelectOptionalCoursesModal from './components/SelectOptionalCoursesModal'
 
 export default function PartialResultAndOtherOptions() {

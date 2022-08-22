@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { OptionalCourse } from '../../app_types'
+import { OptionalCourse } from '@/types'
 
 interface Props {
   curriculaeId: string
