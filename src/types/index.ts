@@ -23,6 +23,7 @@ export interface RecommendationStore {
 }
 
 type OptionalCourse = {
+  id: string
   label: string
   workloadInHours: number
 }

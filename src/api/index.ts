@@ -1,3 +1,4 @@
+import { OptionalCourse } from '@/types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const BASE_URL = 'http://localhost:5000'
@@ -20,7 +21,16 @@ export const recommendationApi = createApi({
       },
       // transformResponse: response => response.data,
     }),
+    fetchOptionalCourses: builder.query<OptionalCourse[], string>({
+      query: (curriculumId: string) => ({
+        method: 'GET',
+        url: `/courses?curriculumId=${curriculumId}&type=optional`,
+      }),
+    }),
   }),
 })
 
-export const { useFetchAcademicHistoryDataMutation } = recommendationApi
+export const {
+  useFetchAcademicHistoryDataMutation,
+  useFetchOptionalCoursesQuery,
+} = recommendationApi
