@@ -2,13 +2,22 @@ import {
   Autocomplete,
   Box,
   Button,
+  Checkbox,
   Grid,
   Modal,
   TextField,
   Typography,
 } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { OptionalCourse } from '@/types'
+import { useFetchOptionalCoursesQuery } from '@/api'
+
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
+import CheckBoxIcon from '@mui/icons-material/CheckBox'
+import { colors } from '@/theme'
+
+const icon = <CheckBoxOutlineBlankIcon fontSize="small" />
+const checkedIcon = <CheckBoxIcon fontSize="small" />
 
 interface Props {
   curriculaeId: string
@@ -18,14 +27,6 @@ interface Props {
   setSelectedOptionalCourses: (courses: OptionalCourse[]) => void
 }
 
-const courses: OptionalCourse[] = [
-  { label: 'Cálculo numérico', workloadInHours: 60 },
-  { label: 'Desenho mecânico', workloadInHours: 90 },
-  { label: 'Algoritmo e programação de computadores', workloadInHours: 90 },
-  { label: 'Introdução à engenharia', workloadInHours: 30 },
-  { label: 'Humanidades e cidadania', workloadInHours: 60 },
-]
-
 export default function SelectOptionalCoursesModal({
   open,
   handleClose,
@@ -34,13 +35,8 @@ export default function SelectOptionalCoursesModal({
   setSelectedOptionalCourses,
 }: Props) {
   const [inputValue, setInputValue] = useState('')
-  const [optionalCourses, setOptionalCourses] = useState<OptionalCourse[]>([])
-
-  useEffect(() => {
-    // response = await axios.get('/optional-courses?course_id=xxxx&curriculae_id=${curriculaeId}')
-    // setOptionalCourses(response.data)
-    setOptionalCourses(courses)
-  }, [])
+  const { data: optionalCourses = [] } =
+    useFetchOptionalCoursesQuery(curriculaeId)
 
   return (
     <Modal open={open} disableEnforceFocus onClose={handleClose}>
@@ -60,14 +56,21 @@ export default function SelectOptionalCoursesModal({
           padding: '16px',
         }}
       >
-        <Typography>Currículo: {curriculaeId}</Typography>
+        <Box marginBottom="8px" display="flex" color={colors['green-4']}>
+          <Typography mr={0.5}>Currículo:</Typography>
+          <Typography>{curriculaeId}</Typography>
+        </Box>
 
-        <Typography>
-          Selecione as disciplinas optativas que você deseja cursar
-        </Typography>
+        <Box>
+          <Typography color={colors['green-4']} marginBottom="16px">
+            Selecione as disciplinas optativas que você deseja cursar
+          </Typography>
+        </Box>
 
         <Autocomplete
           multiple
+          disableCloseOnSelect
+          limitTags={2}
           options={optionalCourses}
           value={selectedOptionalCourses}
           onChange={(event, newSelectedCourses) =>
@@ -75,15 +78,26 @@ export default function SelectOptionalCoursesModal({
           }
           inputValue={inputValue}
           onInputChange={(event, newValue) => setInputValue(newValue)}
+          includeInputInList={false}
           getOptionLabel={option =>
             `${option.label} (${option.workloadInHours}h)`
           }
           renderInput={params => (
             <TextField
-              variant="standard"
+              variant="outlined"
               label="Cursos optativos"
               {...params}
             />
+          )}
+          renderOption={(props, option, { selected }) => (
+            <li {...props}>
+              <Checkbox
+                icon={icon}
+                checkedIcon={checkedIcon}
+                checked={selected}
+              />
+              {option.label}
+            </li>
           )}
         />
 
