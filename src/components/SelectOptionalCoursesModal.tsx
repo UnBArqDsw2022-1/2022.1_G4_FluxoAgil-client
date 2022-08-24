@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import {
   selectSelectedOptionalCourses,
   setSelectedOptionalCourses,
-} from '@/store/selectedOptionalCourses'
+} from '@/store/recommendation'
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />
 const checkedIcon = <CheckBoxIcon fontSize="small" />
@@ -42,19 +42,16 @@ export default function SelectOptionalCoursesModal({
   return (
     <Modal open={open} disableEnforceFocus onClose={handleClose}>
       <Box
+        width="350px"
+        border="0"
+        borderRadius="3px"
+        padding="16px"
+        position="absolute"
+        top="50%"
+        left="50%"
         sx={{
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
           transform: 'translate(-50%, -50%)',
           background: 'white',
-          width: '350px',
-          border: '0',
-          borderRadius: '3px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          padding: '16px',
         }}
       >
         <Box mb={2} display="flex">

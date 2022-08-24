@@ -18,14 +18,17 @@ export interface AcademicHistory {
   }
 }
 
-export interface RecommendationStore {
-  academicHistory: AcademicHistory | null
-}
-
 type OptionalCourse = {
   id: string
   title: string
   workloadInHours: number
+}
+
+export interface RecommendationStore {
+  academicHistory: AcademicHistory | null
+  options: {
+    selectedOptionalCourses: OptionalCourse[]
+  }
 }
 
 export interface OptionalCoursesStore {
