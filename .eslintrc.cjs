@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    jest: true,
   },
   extends: [
     'eslint:all',
@@ -27,7 +28,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['vite.config.ts'] },
+      { devDependencies: ['vite.config.ts', '**/*.test.tsx', '**/*.spec.tsx'] },
     ],
     'react/prop-types': 'off',
     'react/function-component-definition': 'off',
