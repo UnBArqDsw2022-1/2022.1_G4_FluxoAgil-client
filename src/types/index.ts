@@ -24,8 +24,12 @@ export interface RecommendationStore {
 
 type OptionalCourse = {
   id: string
-  label: string
+  title: string
   workloadInHours: number
+}
+
+export interface OptionalCoursesStore {
+  optionalCourses: OptionalCourse[]
 }
 
 export type { OptionalCourse }
