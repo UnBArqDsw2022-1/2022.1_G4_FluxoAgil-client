@@ -83,7 +83,7 @@ export default function SelectOptionalCoursesModal({
             <TextField
               variant="outlined"
               color="secondary"
-              label="Cursos optativos"
+              label="Disciplinas optativas"
               {...params}
             />
           )}
