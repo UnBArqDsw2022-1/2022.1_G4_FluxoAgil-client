@@ -71,6 +71,7 @@ export default function SelectOptionalCoursesModal({
           limitTags={2}
           options={optionalCoursesFromApi}
           value={selectedOptionalCourses}
+          renderTags={values => `${values.length} optativas selecionadas`}
           onChange={(event, newSelectedCourses) => {
             dispatch(setSelectedOptionalCourses(newSelectedCourses))
           }}
