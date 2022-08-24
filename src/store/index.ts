@@ -1,13 +1,13 @@
 import { recommendationApi } from '@/api'
 import { configureStore } from '@reduxjs/toolkit'
 import recommendation from './recommendation'
-import optionalCourses from './optionalCourses'
+import selectedOptionalCourses from './selectedOptionalCourses'
 
 export default configureStore({
   reducer: {
     recommendation,
     [recommendationApi.reducerPath]: recommendationApi.reducer,
-    optionalCourses,
+    selectedOptionalCourses,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(recommendationApi.middleware),

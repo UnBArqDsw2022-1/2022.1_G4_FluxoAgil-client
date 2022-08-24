@@ -29,7 +29,7 @@ type OptionalCourse = {
 }
 
 export interface OptionalCoursesStore {
-  optionalCourses: OptionalCourse[]
+  selectedOptionalCourses: OptionalCourse[]
 }
 
 export type { OptionalCourse }

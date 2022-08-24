@@ -1,12 +1,8 @@
 import { Button, Grid, Link, Typography } from '@mui/material'
 import { useState } from 'react'
-import { OptionalCourse } from '@/types'
 import SelectOptionalCoursesModal from '@/components/SelectOptionalCoursesModal'
 
 export default function PartialResultAndOtherOptions() {
-  const [selectedOptionalCourses, setSelectedOptionalCourses] = useState<
-    OptionalCourse[]
-  >([])
   const [
     isSelectOptionalCoursesModalOpen,
     setIsSelectOptionalCoursesModalOpen,
@@ -45,11 +41,9 @@ export default function PartialResultAndOtherOptions() {
       </Grid>
 
       <SelectOptionalCoursesModal
-        curriculaeId="6362/01"
+        curriculumId="6362/01"
         open={isSelectOptionalCoursesModalOpen}
         handleClose={() => setIsSelectOptionalCoursesModalOpen(false)}
-        selectedOptionalCourses={selectedOptionalCourses}
-        setSelectedOptionalCourses={setSelectedOptionalCourses}
       />
     </Grid>
   )

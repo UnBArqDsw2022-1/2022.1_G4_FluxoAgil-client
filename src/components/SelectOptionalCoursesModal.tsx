@@ -9,34 +9,35 @@ import {
   Typography,
 } from '@mui/material'
 import { useState } from 'react'
-import { OptionalCourse } from '@/types'
 import { useFetchOptionalCoursesQuery } from '@/api'
 
 import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
-import { colors } from '@/theme'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  selectSelectedOptionalCourses,
+  setSelectedOptionalCourses,
+} from '@/store/selectedOptionalCourses'
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />
 const checkedIcon = <CheckBoxIcon fontSize="small" />
 
 interface Props {
-  curriculaeId: string
+  curriculumId: string
   open: boolean
   handleClose: () => void
-  selectedOptionalCourses: OptionalCourse[]
-  setSelectedOptionalCourses: (courses: OptionalCourse[]) => void
 }
 
 export default function SelectOptionalCoursesModal({
   open,
   handleClose,
-  curriculaeId,
-  selectedOptionalCourses,
-  setSelectedOptionalCourses,
+  curriculumId,
 }: Props) {
   const [inputValue, setInputValue] = useState('')
-  const { data: optionalCourses = [] } =
-    useFetchOptionalCoursesQuery(curriculaeId)
+  const dispatch = useDispatch()
+  const selectedOptionalCourses = useSelector(selectSelectedOptionalCourses)
+  const { data: optionalCoursesFromApi = [] } =
+    useFetchOptionalCoursesQuery(curriculumId)
 
   return (
     <Modal open={open} disableEnforceFocus onClose={handleClose}>
@@ -56,13 +57,13 @@ export default function SelectOptionalCoursesModal({
           padding: '16px',
         }}
       >
-        <Box marginBottom="8px" display="flex" color={colors['green-4']}>
+        <Box mb={2} display="flex">
           <Typography mr={0.5}>Currículo:</Typography>
-          <Typography>{curriculaeId}</Typography>
+          <Typography>{curriculumId}</Typography>
         </Box>
 
         <Box>
-          <Typography color={colors['green-4']} marginBottom="16px">
+          <Typography mb={2}>
             Selecione as disciplinas optativas que você deseja cursar
           </Typography>
         </Box>
@@ -71,39 +72,38 @@ export default function SelectOptionalCoursesModal({
           multiple
           disableCloseOnSelect
           limitTags={2}
-          options={optionalCourses}
+          options={optionalCoursesFromApi}
           value={selectedOptionalCourses}
-          onChange={(event, newSelectedCourses) =>
-            setSelectedOptionalCourses(newSelectedCourses)
-          }
+          onChange={(event, newSelectedCourses) => {
+            dispatch(setSelectedOptionalCourses(newSelectedCourses))
+          }}
           inputValue={inputValue}
           onInputChange={(event, newValue) => setInputValue(newValue)}
           includeInputInList={false}
-          getOptionLabel={option =>
-            `${option.label} (${option.workloadInHours}h)`
-          }
+          getOptionLabel={option => option.title}
           renderInput={params => (
             <TextField
               variant="outlined"
+              color="secondary"
               label="Cursos optativos"
               {...params}
             />
           )}
           renderOption={(props, option, { selected }) => (
-            <li {...props}>
+            <li {...props} key={option.id}>
               <Checkbox
                 icon={icon}
                 checkedIcon={checkedIcon}
                 checked={selected}
               />
-              {option.label}
+              {option.title}
             </li>
           )}
         />
 
         <Grid container justifyContent="space-between" mt="64px">
           <Button
-            onClick={() => setSelectedOptionalCourses([])}
+            onClick={() => dispatch(setSelectedOptionalCourses([]))}
             variant="outlined"
             color="secondary"
           >
