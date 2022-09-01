@@ -48,7 +48,7 @@ export default function RecommendationSettings() {
           </Box>
         </Grid>
 
-        <Grid item xs={12} sm={6} spacing={2}>
+        <Grid item xs={12} sm={6}>
           <Box>
             <Box display="flex" alignItems="center" pb={1}>
               <Typography pr={1}>

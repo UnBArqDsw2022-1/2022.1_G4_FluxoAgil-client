@@ -62,7 +62,7 @@ export default function AcademicHistoryUpload() {
       return
     }
 
-    dispatch(setAcademicHistoryData({ approvedCourses: data }))
+    dispatch(setAcademicHistoryData(data))
   }, [data])
 
   const isValidDraggedFile = (items: DataTransferItemList) => {

@@ -8,9 +8,9 @@ interface AcademicHistoryWorkload {
 
 // TODO Remover opcionais após adicionar parâmetros na resposta do back-end
 export interface AcademicHistory {
-  curriculumId?: string
+  curriculumId: string
   approvedCourses: string[]
-  workload?: {
+  workload: {
     mandatory: AcademicHistoryWorkload
     optional: AcademicHistoryWorkload
     supplementary: AcademicHistoryWorkload
