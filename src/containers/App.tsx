@@ -17,7 +17,7 @@ function App() {
 
       <Box py={5}>
         <Container maxWidth="md">
-          {!academicHistory ? (
+          {academicHistory ? (
             <RecommendationSettings />
           ) : (
             <AcademicHistoryUpload />

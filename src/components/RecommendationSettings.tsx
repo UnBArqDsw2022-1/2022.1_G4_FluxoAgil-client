@@ -1,87 +1,93 @@
+import { useState } from 'react'
 import {
   Alert,
   Box,
   Button,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
   Grid,
-  Link,
   Slider,
   Tooltip,
   Typography,
 } from '@mui/material'
-import { useState } from 'react'
-import SelectOptionalCoursesModal from '@/components/SelectOptionalCoursesModal'
 import { InfoOutlined } from '@mui/icons-material'
+import SelectOptionalCoursesModal from '@/components/SelectOptionalCoursesModal'
 
-export default function PartialResultAndOtherOptions() {
+export default function RecommendationSettings() {
+  const [maxCredits, setMaxCredits] = useState(24)
   const [
     isSelectOptionalCoursesModalOpen,
     setIsSelectOptionalCoursesModalOpen,
   ] = useState(false)
 
+  const handleMaxCreditsChange = (
+    event: Event,
+    newValue: number | number[]
+  ) => {
+    if (typeof newValue === 'number') {
+      setMaxCredits(newValue)
+    }
+  }
+
   return (
-    <Grid
-      container
-      direction="row"
-      justifyContent="center"
-      alignItems="flex-start"
-      sx={{
-        minHeight: '300px',
-        border: '2px solid #0CABA8',
-        borderRadius: '5px',
-      }}
-    >
-      <Grid item xs={6} sm={6} container minHeight="300px" padding={5}>
-        {/* <Typography variant="body1">
-          <Link href="editSelectedCourses">Editar disciplinas cursadas</Link>
+    <Box border="2px solid #0CABA8" borderRadius="5px">
+      <Grid container p={5} minHeight="300px">
+        <Grid item xs={12} sm={6}>
+          <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignContent="center"
+            height="100%"
+          >
+            <Typography variant="h2" pb={2}>
+              Visão geral
+            </Typography>
 
-        </Typography> */}
-
-        <Box display="flex" flexDirection="column" justifyContent="center">
-          <Typography variant="h2" pb={2}>
-            Visão geral
-          </Typography>
-
-          <Typography>Total integralizado: 11%</Typography>
-          <Typography>Obrigatórias integralizadas: </Typography>
-          <Typography>Optativas integralizadas: </Typography>
-        </Box>
-      </Grid>
-
-      <Grid item xs={6} sm={6} container padding={5} spacing={2}>
-        <Grid item>
-          <Typography pb={1}>Quantidade máxima de créditos</Typography>
-          <Slider
-            color="secondary"
-            defaultValue={24}
-            min={8}
-            max={32}
-            // valueLabelDisplay="on"
-          />
+            <Typography>Total integralizado: 11%</Typography>
+            <Typography>Obrigatórias integralizadas: </Typography>
+            <Typography>Optativas integralizadas: </Typography>
+          </Box>
         </Grid>
 
-        <Grid item>
-          <FormGroup>
-            <FormControlLabel
-              control={<Checkbox defaultChecked color="secondary" />}
-              label="Matriculadas como concluídas"
+        <Grid item xs={12} sm={6} spacing={2}>
+          <Box>
+            <Box display="flex" alignItems="center" pb={1}>
+              <Typography pr={1}>
+                Até <strong>{maxCredits} créditos</strong> por semestre
+              </Typography>
+              <Tooltip
+                title={`A quantidade mínima é equivalente a disciplina com maior quantidade de créditos.
+              A máxima é definida e varia de acordo com o curso`}
+              >
+                <InfoOutlined fontSize="small" />
+              </Tooltip>
+            </Box>
+
+            <Slider
+              value={maxCredits}
+              min={8}
+              max={32}
+              color="secondary"
+              onChange={handleMaxCreditsChange}
             />
-          </FormGroup>
-        </Grid>
+          </Box>
 
-        <Grid item>
-          <Alert severity="info">
-            Ainda falta 30h
-            <Tooltip title="2 créditos">
-              <InfoOutlined fontSize="small" />
-            </Tooltip>
-            em optativas para você se formar
-          </Alert>
-        </Grid>
+          <Box>
+            <Alert severity="info">
+              <Typography>
+                Ainda faltam XX em optativas para você se formar.
+              </Typography>
+            </Alert>
 
-        <Grid item xs={12}>
+            <Typography variant="body1">
+              <Button
+                variant="text"
+                onClick={() => setIsSelectOptionalCoursesModalOpen(true)}
+              >
+                Selecionar as disciplinas optativas
+              </Button>
+            </Typography>
+          </Box>
+
           <Box display="flex" justifyContent="space-between" width="100%">
             <Button variant="outlined" color="secondary">
               Cancelar
@@ -91,19 +97,13 @@ export default function PartialResultAndOtherOptions() {
             </Button>
           </Box>
         </Grid>
-        {/* <Typography>Ainda faltam 30h em optativas</Typography>
-        <Typography variant="body1">
-          <Button onClick={() => setIsSelectOptionalCoursesModalOpen(true)}>
-            Selecionar as disciplinas optativas
-          </Button>
-        </Typography> */}
-      </Grid>
 
-      <SelectOptionalCoursesModal
-        curriculumId="6362/01"
-        open={isSelectOptionalCoursesModalOpen}
-        handleClose={() => setIsSelectOptionalCoursesModalOpen(false)}
-      />
-    </Grid>
+        <SelectOptionalCoursesModal
+          curriculumId="6362/01"
+          open={isSelectOptionalCoursesModalOpen}
+          handleClose={() => setIsSelectOptionalCoursesModalOpen(false)}
+        />
+      </Grid>
+    </Box>
   )
 }
