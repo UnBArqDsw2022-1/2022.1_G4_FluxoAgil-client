@@ -49,15 +49,12 @@ export default function RecommendationSettings() {
         </Grid>
 
         <Grid item xs={12} sm={6}>
-          <Box>
+          <Box display="flex" flexDirection="column">
             <Box display="flex" alignItems="center" pb={1}>
               <Typography pr={1}>
                 Até <strong>{maxCredits} créditos</strong> por semestre
               </Typography>
-              <Tooltip
-                title={`A quantidade mínima é equivalente a disciplina com maior quantidade de créditos.
-              A máxima é definida e varia de acordo com o curso`}
-              >
+              <Tooltip title="A quantidade máxima de créditos que será recomendada em disciplinas em cada semestre.">
                 <InfoOutlined fontSize="small" />
               </Tooltip>
             </Box>
@@ -71,24 +68,33 @@ export default function RecommendationSettings() {
             />
           </Box>
 
-          <Box>
+          <Box mt={3}>
             <Alert severity="info">
               <Typography>
                 Ainda faltam XX em optativas para você se formar.
               </Typography>
             </Alert>
 
-            <Typography variant="body1">
-              <Button
-                variant="text"
-                onClick={() => setIsSelectOptionalCoursesModalOpen(true)}
-              >
-                Selecionar as disciplinas optativas
-              </Button>
-            </Typography>
+            <Button
+              disableRipple
+              sx={{
+                textDecoration: 'underline',
+                ':hover': { textDecoration: 'underline' },
+                p: 0,
+                mt: 3,
+              }}
+              onClick={() => setIsSelectOptionalCoursesModalOpen(true)}
+            >
+              Selecionar disciplinas optativas
+            </Button>
           </Box>
 
-          <Box display="flex" justifyContent="space-between" width="100%">
+          <Box
+            display="flex"
+            justifyContent="space-between"
+            width="100%"
+            mt={3}
+          >
             <Button variant="outlined" color="secondary">
               Cancelar
             </Button>

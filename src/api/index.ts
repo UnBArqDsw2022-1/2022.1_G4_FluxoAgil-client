@@ -7,7 +7,7 @@ const BASE_URL = 'http://localhost:5000'
 export const recommendationApi = createApi({
   reducerPath: 'recommendationApi',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ['Post'],
+  tagTypes: ['Recommendation'],
   endpoints: builder => ({
     fetchAcademicHistoryData: builder.mutation<AcademicHistory, File>({
       query: (academicHistory: File) => {
