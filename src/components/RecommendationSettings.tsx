@@ -10,8 +10,13 @@ import {
 } from '@mui/material'
 import { InfoOutlined } from '@mui/icons-material'
 import SelectOptionalCoursesModal from '@/components/SelectOptionalCoursesModal'
-import { selectAcademicHistory } from '@/store/recommendation'
-import { useSelector } from 'react-redux'
+import {
+  resetRecommendation,
+  selectAcademicHistory,
+  selectRecommendationOptions,
+} from '@/store/recommendation'
+import { useDispatch, useSelector } from 'react-redux'
+import { useFetchRecommendationMutation } from '@/api'
 
 const getPercentage = (partial: number, total: number) => {
   const percentage = (partial / total) * 100
@@ -20,6 +25,11 @@ const getPercentage = (partial: number, total: number) => {
 
 export default function RecommendationSettings() {
   const academicHistory = useSelector(selectAcademicHistory)
+  const recommendationOptions = useSelector(selectRecommendationOptions)
+
+  const dispatch = useDispatch()
+  const [fetchAcademicHistory] = useFetchRecommendationMutation()
+
   const [totalIntegrated, setTotalIntegrated] = useState(0)
   const [mandatoryIntegrated, setMandatoryIntegrated] = useState(0)
   const [optionalIntegrated, setOptionalIntegrated] = useState(0)
@@ -70,6 +80,14 @@ export default function RecommendationSettings() {
     if (typeof newValue === 'number') {
       setMaxCredits(newValue)
     }
+  }
+
+  const handleCancelRecommendation = () => {
+    dispatch(resetRecommendation())
+  }
+
+  const handleGetRecommendation = () => {
+    fetchAcademicHistory(recommendationOptions)
   }
 
   return (
@@ -161,10 +179,19 @@ export default function RecommendationSettings() {
             width="100%"
             mt={3}
           >
-            <Button variant="outlined" color="secondary">
+            <Button
+              variant="outlined"
+              color="secondary"
+              onClick={handleCancelRecommendation}
+            >
               Cancelar
             </Button>
-            <Button variant="contained" color="secondary" disableElevation>
+            <Button
+              variant="contained"
+              color="secondary"
+              disableElevation
+              onClick={handleGetRecommendation}
+            >
               Processar
             </Button>
           </Box>

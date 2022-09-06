@@ -1,4 +1,9 @@
-import { AcademicHistory, OptionalCourse } from '@/types'
+import {
+  AcademicHistory,
+  OptionalCourse,
+  Recommendation,
+  RecommendationOptions,
+} from '@/types'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import camelcaseKeys from 'camelcase-keys'
 
@@ -15,7 +20,7 @@ export const recommendationApi = createApi({
         formData.append('file', academicHistory)
 
         return {
-          url: 'academic-history',
+          url: '/academic-history',
           method: 'POST',
           body: formData,
         }
@@ -24,8 +29,18 @@ export const recommendationApi = createApi({
     }),
     fetchOptionalCourses: builder.query<OptionalCourse[], string>({
       query: (curriculumId: string) => ({
-        method: 'GET',
         url: `/courses?curriculumId=${curriculumId}&type=optional`,
+        method: 'GET',
+      }),
+    }),
+    fetchRecommendation: builder.mutation<
+      Recommendation,
+      RecommendationOptions
+    >({
+      query: (options: RecommendationOptions) => ({
+        url: '/recommendation',
+        method: 'POST',
+        body: options,
       }),
     }),
   }),
@@ -34,4 +49,5 @@ export const recommendationApi = createApi({
 export const {
   useFetchAcademicHistoryDataMutation,
   useFetchOptionalCoursesQuery,
+  useFetchRecommendationMutation,
 } = recommendationApi

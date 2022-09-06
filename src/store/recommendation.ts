@@ -12,6 +12,7 @@ const initialState: RecommendationStore = {
   options: {
     selectedOptionalCourses: [],
   },
+  recommendation: null,
 }
 
 export const recommendationSlice = createSlice({
@@ -27,11 +28,15 @@ export const recommendationSlice = createSlice({
     ) => {
       state.options.selectedOptionalCourses = action.payload
     },
+    resetRecommendation: () => initialState,
   },
 })
 
-export const { setAcademicHistoryData, setSelectedOptionalCourses } =
-  recommendationSlice.actions
+export const {
+  setAcademicHistoryData,
+  setSelectedOptionalCourses,
+  resetRecommendation,
+} = recommendationSlice.actions
 
 export default recommendationSlice.reducer
 
@@ -40,3 +45,6 @@ export const selectAcademicHistory = (state: RootState) =>
 
 export const selectSelectedOptionalCourses = (state: RootState) =>
   state.recommendation.options.selectedOptionalCourses
+
+export const selectRecommendationOptions = (state: RootState) =>
+  state.recommendation.options

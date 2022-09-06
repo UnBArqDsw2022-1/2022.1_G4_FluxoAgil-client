@@ -18,24 +18,37 @@ export interface AcademicHistory {
   }
 }
 
-type OptionalCourse = {
+export interface OptionalCourse {
   id: string
   title: string
   workloadInHours: number
 }
 
-export interface RecommendationStore {
-  academicHistory: AcademicHistory | null
-  options: {
-    selectedOptionalCourses: OptionalCourse[]
-  }
-}
-
-export interface OptionalCoursesStore {
+export interface RecommendationOptions {
   selectedOptionalCourses: OptionalCourse[]
 }
 
-export type { OptionalCourse }
+export interface Course {
+  id: string
+  title: string
+  prerequisites: string[]
+}
+
+interface Period {
+  credits: number
+  courses: Course[]
+}
+
+export interface Recommendation {
+  maxCreditsByPeriod: number
+  periods: Period[]
+}
+
+export interface RecommendationStore {
+  academicHistory: AcademicHistory | null
+  options: RecommendationOptions
+  recommendation: Recommendation | null
+}
 
 export type RootState = ReturnType<typeof store.getState>
 export type AppDispatch = typeof store.dispatch
