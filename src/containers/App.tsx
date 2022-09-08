@@ -7,6 +7,7 @@ import AcademicHistoryUpload from '@/components/AcademicHistoryUpload'
 
 import { selectAcademicHistory } from '@/store/recommendation'
 import RecommendationSettings from '@/components/RecommendationSettings'
+import Recommendation from '@/components/Recommendation'
 
 function App() {
   const academicHistory = useSelector(selectAcademicHistory)
@@ -17,13 +18,14 @@ function App() {
 
       <Box py={5}>
         <Container maxWidth="md">
-          {academicHistory ? (
+          {/* {academicHistory ? (
             <RecommendationSettings />
           ) : (
             <AcademicHistoryUpload />
           )}
 
-          <Guide />
+          <Guide /> */}
+          <Recommendation />
         </Container>
       </Box>
     </Box>

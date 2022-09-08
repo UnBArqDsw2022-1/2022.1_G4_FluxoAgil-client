@@ -34,7 +34,7 @@ export interface Course {
   prerequisites: string[]
 }
 
-interface Period {
+export interface Period {
   credits: number
   courses: Course[]
 }

@@ -29,7 +29,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#023535',
-      contrastText: 'white',
+      contrastText: '#FFFFFF',
     },
   },
 
@@ -50,6 +50,18 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: colors['green-3'],
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          fontFamily: 'Inter',
+          fontSize: '1rem',
+          fontWeight: '700',
+          span: {
+            padding: 0,
+          },
         },
       },
     },
