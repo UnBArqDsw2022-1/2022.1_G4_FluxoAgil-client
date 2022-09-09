@@ -53,18 +53,18 @@ const theme = createTheme({
         },
       },
     },
-    MuiChip: {
-      styleOverrides: {
-        root: {
-          fontFamily: 'Inter',
-          fontSize: '0.875rem',
-          fontWeight: '600',
-          span: {
-            padding: 0,
-          },
-        },
-      },
-    },
+    // MuiChip: {
+    //   styleOverrides: {
+    //     root: {
+    //       fontFamily: 'Inter',
+    //       fontSize: '0.875rem',
+    //       fontWeight: '600',
+    //       span: {
+    //         padding: 0,
+    //       },
+    //     },
+    //   },
+    // },
   },
 
   typography,

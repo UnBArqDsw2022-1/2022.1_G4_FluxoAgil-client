@@ -1,8 +1,6 @@
-import { Course } from '@/types'
-import { Grid, Typography, Box, Chip } from '@mui/material'
-import React from 'react'
+import { selectRecommendation } from '@/store/recommendation'
+import { Box, Card, CardContent, Chip, Grid, Typography } from '@mui/material'
 import { useSelector } from 'react-redux'
-import { selectRecommendation } from 'src/store/recommendation'
 
 const periodNumbers = [
   '2022/2',
@@ -24,7 +22,7 @@ const periodNumbers = [
   '2030/2',
 ]
 
-export default function RecommendationContainer() {
+export default function Recommendation() {
   const recommendation = useSelector(selectRecommendation)
 
   if (!recommendation) {
@@ -32,21 +30,27 @@ export default function RecommendationContainer() {
   }
 
   return (
-    <Grid container spacing={2} padding={0} paddingLeft={0}>
-      <Grid item xs={12}>
-        <Typography variant="h5">
+    <>
+      <Box mb={3}>
+        <Typography variant="h5" pt={3}>
           Cursando até{' '}
           <strong> {recommendation.maxCreditsByPeriod} créditos</strong> em
           cada, são necessários
           <strong> {recommendation.periods.length} semestres </strong>
           para você se formar.
         </Typography>
-      </Grid>
-      <Grid item xs={12} padding={0} marginTop="8px">
-        {recommendation.periods.map((period, index) => {
-          return (
-            <Grid container padding={0}>
-              <Grid item xs={1} display="flex" alignItems="center">
+      </Box>
+
+      <Box>
+        {recommendation.periods.map((period, index) => (
+          <Grid container key={period[0].id} pt={6}>
+            <Grid item xs={1}>
+              <Box
+                display="flex"
+                height="100%"
+                width="100%"
+                // alignItems="center"
+              >
                 <Box
                   sx={{
                     backgroundColor: 'primary.main',
@@ -64,80 +68,68 @@ export default function RecommendationContainer() {
                     <strong>{periodNumbers[index]}</strong>
                   </Typography>
                 </Box>
-              </Grid>
-              <Grid item xs={11} container paddingLeft="6px">
-                <Box
-                  display="flex"
-                  flexWrap="wrap"
-                  padding={0}
-                  margin={0}
-                  marginY="16px"
-                  width="100%"
-                  justifyContent="center"
-                >
-                  {period.map((course: Course) => {
-                    return (
-                      <Box
-                        height="160px"
-                        width="250px"
-                        border="2px solid #008F8C"
-                        borderRadius="5px"
-                        padding="8px"
-                        paddingLeft="16px"
-                        margin="4px"
-                        sx={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          justifyContent: 'space-around',
-                        }}
-                      >
-                        <div>
-                          <Chip
-                            label={course.id}
-                            color="secondary"
-                            sx={{
-                              paddingY: '4px',
-                              paddingX: '8px',
-                              lineHeight: '110%',
-                              backgroundColor: '#008F8C',
-                              color: '#FFF',
-                            }}
-                          />
-                        </div>
-                        <Typography variant="body1">
-                          <strong>{course.title}</strong>
-                        </Typography>
-                        {course.prerequisites.length > 0 && (
-                          <Typography variant="body1">
-                            Pré-requisitos:
-                          </Typography>
-                        )}
-                        <div>
-                          {course.prerequisites.map((prerequisite: string) => {
-                            return (
-                              <Chip
-                                label={prerequisite}
-                                variant="outlined"
-                                sx={{
-                                  paddingY: '4px',
-                                  paddingX: '8px',
-                                  lineHeight: '110%',
-                                  border: '1px solid #008F8C',
-                                  color: '#008F8C',
-                                }}
-                              />
-                            )
-                          })}
-                        </div>
-                      </Box>
-                    )
-                  })}
-                </Box>
-              </Grid>
+              </Box>
             </Grid>
-          )
-        })}
-      </Grid>
-    </Grid>
+
+            <Grid item xs={11} container spacing={1}>
+              {period.map(course => (
+                <Grid item xs={3} key={course.id}>
+                  <Card variant="outlined">
+                    <CardContent sx={{ p: 2 }}>
+                      <Box
+                        display="flex"
+                        flexDirection="column"
+                        justifyContent="space-between"
+                        minHeight="120px"
+                      >
+                        <Box>
+                          <Box>
+                            <Chip
+                              label={course.id}
+                              size="small"
+                              sx={{
+                                backgroundColor: '#008F8C',
+                                color: '#FFF',
+                              }}
+                            />
+                          </Box>
+
+                          <Box minHeight="100%" py={1}>
+                            <Typography>
+                              <strong>{course.title}</strong>
+                            </Typography>
+                          </Box>
+                        </Box>
+                        {course.prerequisites.length > 0 && (
+                          <Box display="flex">
+                            <Typography>Pré-requisitos:</Typography>
+
+                            {course.prerequisites.map(
+                              (prerequisite: string) => (
+                                <Box ml={1} key={prerequisite}>
+                                  <Chip
+                                    label={prerequisite}
+                                    variant="outlined"
+                                    size="small"
+                                    sx={{
+                                      border: '1px solid #008F8C',
+                                      color: '#008F8C',
+                                    }}
+                                  />
+                                </Box>
+                              )
+                            )}
+                          </Box>
+                        )}
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        ))}
+      </Box>
+    </>
   )
 }

@@ -22,7 +22,7 @@ function App() {
 
       <Box py={5}>
         {recommendation ? (
-          <Container maxWidth="lg">
+          <Container maxWidth="xl">
             <Recommendation />
           </Container>
         ) : (
