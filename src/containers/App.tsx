@@ -18,14 +18,14 @@ function App() {
 
       <Box py={5}>
         <Container maxWidth="md">
-          {/* {academicHistory ? (
+          {academicHistory ? (
             <RecommendationSettings />
           ) : (
             <AcademicHistoryUpload />
           )}
 
-          <Guide /> */}
-          <Recommendation />
+          <Guide />
+          {/* <Recommendation /> */}
         </Container>
       </Box>
     </Box>
