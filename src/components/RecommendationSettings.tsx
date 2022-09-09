@@ -13,7 +13,7 @@ import SelectOptionalCoursesModal from '@/components/SelectOptionalCoursesModal'
 import {
   resetRecommendation,
   selectAcademicHistory,
-  selectRecommendationOptions,
+  setRecommendation,
 } from '@/store/recommendation'
 import { useDispatch, useSelector } from 'react-redux'
 import { useFetchRecommendationMutation } from '@/api'
@@ -25,10 +25,9 @@ const getPercentage = (partial: number, total: number) => {
 
 export default function RecommendationSettings() {
   const academicHistory = useSelector(selectAcademicHistory)
-  const recommendationOptions = useSelector(selectRecommendationOptions)
 
   const dispatch = useDispatch()
-  const [fetchAcademicHistory] = useFetchRecommendationMutation()
+  const [fetchAcademicHistory, { data }] = useFetchRecommendationMutation()
 
   const [totalIntegrated, setTotalIntegrated] = useState(0)
   const [mandatoryIntegrated, setMandatoryIntegrated] = useState(0)
@@ -36,7 +35,7 @@ export default function RecommendationSettings() {
   const [optionalPendingInHours, setOptionalPendingInHours] = useState(0)
   const [optionalPendingInCredits, setOptionalPendingInCredits] = useState(0)
   const [supplementaryIntegrated, setSupplementaryIntegrated] = useState(0)
-  const [maxCredits, setMaxCredits] = useState(24)
+  const [maxCreditsByPeriod, setMaxCreditsByPeriod] = useState(24)
   const [
     isSelectOptionalCoursesModalOpen,
     setIsSelectOptionalCoursesModalOpen,
@@ -73,12 +72,20 @@ export default function RecommendationSettings() {
     setSupplementaryIntegrated(supplementaryPercentage)
   }, [academicHistory])
 
+  useEffect(() => {
+    if (!data) {
+      return
+    }
+
+    dispatch(setRecommendation(data))
+  }, [data])
+
   const handleMaxCreditsChange = (
     event: Event,
     newValue: number | number[]
   ) => {
     if (typeof newValue === 'number') {
-      setMaxCredits(newValue)
+      setMaxCreditsByPeriod(newValue)
     }
   }
 
@@ -87,7 +94,13 @@ export default function RecommendationSettings() {
   }
 
   const handleGetRecommendation = () => {
-    fetchAcademicHistory(recommendationOptions)
+    fetchAcademicHistory({
+      settings: {
+        maxCreditsByPeriod,
+        curriculumId: academicHistory?.curriculumId,
+      },
+      approved: academicHistory?.approvedCourses,
+    })
   }
 
   return (
@@ -135,7 +148,7 @@ export default function RecommendationSettings() {
           <Box display="flex" flexDirection="column">
             <Box display="flex" alignItems="center" pb={1}>
               <Typography pr={1}>
-                Até <strong>{maxCredits} créditos</strong> por semestre
+                Até <strong>{maxCreditsByPeriod} créditos</strong> por semestre
               </Typography>
               <Tooltip title="Quantidade máxima de créditos em disciplinas que será recomendada em cada semestre.">
                 <InfoOutlined fontSize="small" />
@@ -143,7 +156,7 @@ export default function RecommendationSettings() {
             </Box>
 
             <Slider
-              value={maxCredits}
+              value={maxCreditsByPeriod}
               min={8}
               max={32}
               color="secondary"

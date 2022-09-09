@@ -16,7 +16,7 @@ const typography = {
   },
   body1: {
     fontFamily: 'Inter',
-    fontSize: '1rem',
+    fontSize: '0.875rem',
     fontWeight: '400',
   },
 }
@@ -29,7 +29,7 @@ const theme = createTheme({
     },
     secondary: {
       main: '#023535',
-      contrastText: 'white',
+      contrastText: '#FFFFFF',
     },
   },
 
@@ -53,6 +53,18 @@ const theme = createTheme({
         },
       },
     },
+    // MuiChip: {
+    //   styleOverrides: {
+    //     root: {
+    //       fontFamily: 'Inter',
+    //       fontSize: '0.875rem',
+    //       fontWeight: '600',
+    //       span: {
+    //         padding: 0,
+    //       },
+    //     },
+    //   },
+    // },
   },
 
   typography,

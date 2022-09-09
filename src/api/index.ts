@@ -33,11 +33,8 @@ export const recommendationApi = createApi({
         method: 'GET',
       }),
     }),
-    fetchRecommendation: builder.mutation<
-      Recommendation,
-      RecommendationOptions
-    >({
-      query: (options: RecommendationOptions) => ({
+    fetchRecommendation: builder.mutation({
+      query: (options: any) => ({
         url: '/recommendation',
         method: 'POST',
         body: options,

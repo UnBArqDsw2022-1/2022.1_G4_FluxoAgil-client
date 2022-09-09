@@ -1,0 +1,426 @@
+{
+  "maxCreditsByPeriod": 24,
+  "periods": [
+    {
+      "courses": [
+        {
+          "id": "MAT0025",
+          "title": "C\u00c1LCULO 1",
+          "prerequisites": [],
+          "period": 1,
+          "credits": 6
+        },
+        {
+          "id": "CIC0004",
+          "title": "ALGORITMOS E PROGRAMA\u00c7\u00c3O DE COMPUTADORES",
+          "prerequisites": [],
+          "period": 1,
+          "credits": 6
+        },
+        {
+          "id": "MAT0031",
+          "title": "INTRODUCAO A ALGEBRA LINEAR",
+          "prerequisites": [],
+          "period": 2,
+          "credits": 4
+        },
+        {
+          "id": "FGA0085",
+          "title": "MATEM\u00c1TICA DISCRETA 1",
+          "prerequisites": [],
+          "period": 3,
+          "credits": 4
+        },
+        {
+          "id": "FGA0150",
+          "title": "PROJETO INTEGRADOR DE ENGENHARIA 1",
+          "prerequisites": [],
+          "period": 4,
+          "credits": 4
+        }
+      ]
+    },
+    {
+      "courses": [
+        {
+          "id": "MAT0026",
+          "title": "C\u00c1LCULO 2",
+          "prerequisites": [
+            "MAT0025"
+          ],
+          "period": 2,
+          "credits": 6
+        },
+        {
+          "id": "FGA0158",
+          "title": "ORIENTA\u00c7\u00c3O A OBJETOS",
+          "prerequisites": [
+            "CIC0004"
+          ],
+          "period": 3,
+          "credits": 4
+        },
+        {
+          "id": "FGA0071",
+          "title": "PR\u00c1TICA DE ELETR\u00d4NICA DIGITAL 1",
+          "prerequisites": [
+            "MAT0031"
+          ],
+          "period": 3,
+          "credits": 2
+        },
+        {
+          "id": "FGA0073",
+          "title": "TEORIA DE ELETR\u00d4NICA DIGITAL 1",
+          "prerequisites": [
+            "MAT0031"
+          ],
+          "period": 3,
+          "credits": 4
+        },
+        {
+          "id": "FGA0147",
+          "title": "ESTRUTURA DE DADOS E ALGORITMOS",
+          "prerequisites": [
+            "CIC0004"
+          ],
+          "period": 4,
+          "credits": 4
+        },
+        {
+          "id": "FGA0250",
+          "title": "PROJETO INTEGRADOR DE ENGENHARIA 2",
+          "prerequisites": [
+            "FGA0150"
+          ],
+          "period": 9,
+          "credits": 4
+        }
+      ]
+    },
+    {
+      "courses": [
+        {
+          "id": "FGA0157",
+          "title": "PROBABILIDADE E ESTAT\u00cdSTICA APLICADO A ENGENHARIA",
+          "prerequisites": [
+            "MAT0025"
+          ],
+          "period": 2,
+          "credits": 4
+        },
+        {
+          "id": "IFD0171",
+          "title": "FISICA 1",
+          "prerequisites": [],
+          "period": 2,
+          "credits": 4
+        },
+        {
+          "id": "FGA0138",
+          "title": "M\u00c9TODOS DE DESENVOLVIMENTO DE SOFTWARE",
+          "prerequisites": [
+            "FGA0158"
+          ],
+          "period": 4,
+          "credits": 4
+        },
+        {
+          "id": "FGA0142",
+          "title": "FUNDAMENTOS DE ARQUITETURA DE COMPUTADORES",
+          "prerequisites": [
+            "FGA0071",
+            "FGA0073"
+          ],
+          "period": 4,
+          "credits": 4
+        },
+        {
+          "id": "FGA0003",
+          "title": "COMPILADORES 1",
+          "prerequisites": [
+            "FGA0147"
+          ],
+          "period": 5,
+          "credits": 4
+        },
+        {
+          "id": "FGA0009",
+          "title": "TRABALHO DE CONCLUS\u00c3O DE CURSO 1",
+          "prerequisites": [],
+          "period": 9,
+          "credits": 4
+        }
+      ]
+    },
+    {
+      "courses": [
+        {
+          "id": "FGA0108",
+          "title": "MATEM\u00c1TICA DISCRETA 2",
+          "prerequisites": [
+            "FGA0085"
+          ],
+          "period": 4,
+          "credits": 4
+        },
+        {
+          "id": "FGA0170",
+          "title": "FUNDAMENTOS DE SISTEMAS OPERACIONAIS",
+          "prerequisites": [
+            "FGA0142"
+          ],
+          "period": 5,
+          "credits": 4
+        },
+        {
+          "id": "FGA0172",
+          "title": "REQUISITOS DE SOFTWARE",
+          "prerequisites": [
+            "FGA0138"
+          ],
+          "period": 5,
+          "credits": 4
+        },
+        {
+          "id": "FGA0173",
+          "title": "INTERA\u00c7\u00c3O HUMANO COMPUTADOR",
+          "prerequisites": [
+            "FGA0138"
+          ],
+          "period": 5,
+          "credits": 4
+        },
+        {
+          "id": "FGA0238",
+          "title": "TESTES DE SOFTWARE",
+          "prerequisites": [
+            "FGA0138"
+          ],
+          "period": 6,
+          "credits": 4
+        },
+        {
+          "id": "FGA0154",
+          "title": "MECANICA DOS S\u00d3LIDOS 1 PARA ENGENHARIA",
+          "prerequisites": [
+            "IFD0171"
+          ],
+          "credits": 4
+        }
+      ]
+    },
+    {
+      "courses": [
+        {
+          "id": "FGA0168",
+          "title": "DESENHO INDUSTRIAL ASSISTIDO POR COMPUTADOR",
+          "prerequisites": [],
+          "period": 1,
+          "credits": 6
+        },
+        {
+          "id": "FGA0133",
+          "title": "ENGENHARIA ECON\u00d4MICA",
+          "prerequisites": [],
+          "period": 3,
+          "credits": 4
+        },
+        {
+          "id": "FGA0164",
+          "title": "HUMANIDADES E CIDADANIA",
+          "prerequisites": [],
+          "period": 3,
+          "credits": 4
+        },
+        {
+          "id": "FGA0208",
+          "title": "ARQUITETURA E DESENHO DE SOFTWARE",
+          "prerequisites": [
+            "FGA0172"
+          ],
+          "period": 6,
+          "credits": 4
+        },
+        {
+          "id": "MAT0027",
+          "title": "C\u00c1LCULO 3",
+          "prerequisites": [
+            "MAT0026"
+          ],
+          "credits": 6
+        }
+      ]
+    },
+    {
+      "courses": [
+        {
+          "id": "FGA0163",
+          "title": "INTRODU\u00c7\u00c3O \u00c0 ENGENHARIA",
+          "prerequisites": [],
+          "period": 1,
+          "credits": 4
+        },
+        {
+          "id": "IFD0173",
+          "title": "FISICA 1 EXPERIMENTAL",
+          "prerequisites": [],
+          "period": 2,
+          "credits": 2
+        },
+        {
+          "id": "FGA0160",
+          "title": "M\u00c9TODOS NUM\u00c9RICOS PARA ENGENHARIA",
+          "prerequisites": [
+            "MAT0026"
+          ],
+          "period": 3,
+          "credits": 4
+        },
+        {
+          "id": "FGA0184",
+          "title": "GEST\u00c3O DA PRODU\u00c7\u00c3O E QUALIDADE",
+          "prerequisites": [
+            "FGA0133"
+          ],
+          "period": 4,
+          "credits": 4
+        },
+        {
+          "id": "FGA0137",
+          "title": "SISTEMAS DE BANCO DE DADOS 1",
+          "prerequisites": [
+            "FGA0108"
+          ],
+          "period": 5,
+          "credits": 4
+        },
+        {
+          "id": "ENM0080",
+          "title": "FENOMENOS DE TRANSPORTE",
+          "prerequisites": [
+            "FGA0154",
+            "MAT0027"
+          ],
+          "credits": 5
+        }
+      ]
+    },
+    {
+      "courses": [
+        {
+          "id": "FGA0060",
+          "title": "SISTEMAS DE BANCO DE DADOS 2",
+          "prerequisites": [
+            "FGA0137"
+          ],
+          "period": 6,
+          "credits": 4
+        },
+        {
+          "id": "FGA0211",
+          "title": "FUNDAMENTOS DE REDES DE COMPUTADORES",
+          "prerequisites": [
+            "FGA0170"
+          ],
+          "period": 6,
+          "credits": 4
+        },
+        {
+          "id": "FGA0109",
+          "title": "FUNDAMENTOS DE SISTEMAS EMBARCADOS",
+          "prerequisites": [
+            "FGA0170"
+          ],
+          "period": 7,
+          "credits": 4
+        },
+        {
+          "id": "FGA0210",
+          "title": "PARADIGMAS DE PROGRAMA\u00c7\u00c3O",
+          "prerequisites": [
+            "FGA0158",
+            "FGA0003"
+          ],
+          "period": 7,
+          "credits": 4
+        },
+        {
+          "id": "FGA0242",
+          "title": "T\u00c9CNICAS DE PROGRAMA\u00c7\u00c3O EM PLATAFORMAS EMERGENTES",
+          "prerequisites": [
+            "FGA0208",
+            "FGA0238"
+          ],
+          "period": 7,
+          "credits": 4
+        },
+        {
+          "id": "FGA0248",
+          "title": "SISTEMAS DE PROPULS\u00c3O H\u00cdBRIDOS",
+          "prerequisites": [
+            "ENM0080"
+          ],
+          "credits": 4
+        }
+      ]
+    },
+    {
+      "courses": [
+        {
+          "id": "FGA0030",
+          "title": "ESTRUTURAS DE DADOS 2",
+          "prerequisites": [
+            "FGA0147"
+          ],
+          "period": 5,
+          "credits": 4
+        },
+        {
+          "id": "FGA0278",
+          "title": "QUALIDADE DE SOFTWARE 1",
+          "prerequisites": [
+            "FGA0184",
+            "FGA0173"
+          ],
+          "period": 6,
+          "credits": 4
+        },
+        {
+          "id": "FGA0244",
+          "title": "PROGRAMA\u00c7\u00c3O PARA SISTEMAS PARALELOS E DISTRIBU\u00cdDOS",
+          "prerequisites": [],
+          "period": 7,
+          "credits": 4
+        },
+        {
+          "id": "FGA0206",
+          "title": "ENGENHARIA DE PRODUTO DE SOFTWARE",
+          "prerequisites": [
+            "FGA0242"
+          ],
+          "period": 8,
+          "credits": 4
+        },
+        {
+          "id": "FGA0240",
+          "title": "GER\u00caNCIA DE CONFIGURA\u00c7\u00c3O E EVOLU\u00c7\u00c3O DE SOFTWARE",
+          "prerequisites": [
+            "FGA0238"
+          ],
+          "period": 8,
+          "credits": 4
+        },
+        {
+          "id": "FGA0011",
+          "title": "TRABALHO DE CONCLUS\u00c3O DE CURSO 2",
+          "prerequisites": [
+            "FGA0009"
+          ],
+          "period": 9,
+          "credits": 4
+        }
+      ]
+    }
+  ]
+}

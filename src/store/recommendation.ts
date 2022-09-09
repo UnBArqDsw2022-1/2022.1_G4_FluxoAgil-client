@@ -4,6 +4,7 @@ import {
   AcademicHistory,
   OptionalCourse,
   RecommendationStore,
+  Recommendation,
   RootState,
 } from '@/types'
 
@@ -28,6 +29,12 @@ export const recommendationSlice = createSlice({
     ) => {
       state.options.selectedOptionalCourses = action.payload
     },
+    setRecommendation: (state, action) => {
+      state.recommendation = action.payload
+    },
+    getRecommendation: (state, action) => {
+      state.recommendation = action.payload
+    },
     resetRecommendation: () => initialState,
   },
 })
@@ -35,6 +42,7 @@ export const recommendationSlice = createSlice({
 export const {
   setAcademicHistoryData,
   setSelectedOptionalCourses,
+  setRecommendation,
   resetRecommendation,
 } = recommendationSlice.actions
 
@@ -48,3 +56,6 @@ export const selectSelectedOptionalCourses = (state: RootState) =>
 
 export const selectRecommendationOptions = (state: RootState) =>
   state.recommendation.options
+
+export const selectRecommendation = (state: RootState) =>
+  state.recommendation.recommendation

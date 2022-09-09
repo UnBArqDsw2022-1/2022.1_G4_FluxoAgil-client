@@ -6,7 +6,6 @@ interface AcademicHistoryWorkload {
   pending: number
 }
 
-// TODO Remover opcionais após adicionar parâmetros na resposta do back-end
 export interface AcademicHistory {
   curriculumId: string
   approvedCourses: string[]
@@ -34,14 +33,9 @@ export interface Course {
   prerequisites: string[]
 }
 
-interface Period {
-  credits: number
-  courses: Course[]
-}
-
 export interface Recommendation {
   maxCreditsByPeriod: number
-  periods: Period[]
+  periods: Course[][]
 }
 
 export interface RecommendationStore {
