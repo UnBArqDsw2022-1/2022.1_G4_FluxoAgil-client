@@ -1,4 +1,4 @@
-import { Recommendation, Period, Course } from '@/types'
+import { Course } from '@/types'
 import { Grid, Typography, Box, Chip } from '@mui/material'
 import React from 'react'
 import { useSelector } from 'react-redux'
@@ -25,21 +25,25 @@ const periodNumbers = [
 ]
 
 export default function RecommendationContainer() {
-  const recommendation: Recommendation = useSelector(selectRecommendation)
+  const recommendation = useSelector(selectRecommendation)
+
+  if (!recommendation) {
+    return null
+  }
 
   return (
     <Grid container spacing={2} padding={0} paddingLeft={0}>
       <Grid item xs={12}>
-        <Typography variant="body1">
+        <Typography variant="h5">
           Cursando até{' '}
-          <strong> {recommendation.maxCreditsByPeriod} créditos</strong> em cada
-          semestre, serão necessários
+          <strong> {recommendation.maxCreditsByPeriod} créditos</strong> em
+          cada, são necessários
           <strong> {recommendation.periods.length} semestres </strong>
-          para você se formar
+          para você se formar.
         </Typography>
       </Grid>
       <Grid item xs={12} padding={0} marginTop="8px">
-        {recommendation.periods.map((period: Period, index) => {
+        {recommendation.periods.map((period, index) => {
           return (
             <Grid container padding={0}>
               <Grid item xs={1} display="flex" alignItems="center">
@@ -71,7 +75,7 @@ export default function RecommendationContainer() {
                   width="100%"
                   justifyContent="center"
                 >
-                  {period.courses.map((course: Course) => {
+                  {period.map((course: Course) => {
                     return (
                       <Box
                         height="160px"

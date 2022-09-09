@@ -5,28 +5,37 @@ import Header from '@/components/Header'
 import Guide from '@/components/Guide'
 import AcademicHistoryUpload from '@/components/AcademicHistoryUpload'
 
-import { selectAcademicHistory } from '@/store/recommendation'
+import {
+  selectAcademicHistory,
+  selectRecommendation,
+} from '@/store/recommendation'
 import RecommendationSettings from '@/components/RecommendationSettings'
 import Recommendation from '@/components/Recommendation'
 
 function App() {
   const academicHistory = useSelector(selectAcademicHistory)
+  const recommendation = useSelector(selectRecommendation)
 
   return (
     <Box height="100vh">
       <Header />
 
       <Box py={5}>
-        <Container maxWidth="md">
-          {academicHistory ? (
-            <RecommendationSettings />
-          ) : (
-            <AcademicHistoryUpload />
-          )}
+        {recommendation ? (
+          <Container maxWidth="lg">
+            <Recommendation />
+          </Container>
+        ) : (
+          <Container maxWidth="md">
+            {academicHistory ? (
+              <RecommendationSettings />
+            ) : (
+              <AcademicHistoryUpload />
+            )}
 
-          <Guide />
-          {/* <Recommendation /> */}
-        </Container>
+            <Guide />
+          </Container>
+        )}
       </Box>
     </Box>
   )
