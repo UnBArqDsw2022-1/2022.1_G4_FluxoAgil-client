@@ -16,7 +16,7 @@ const typography = {
   },
   body1: {
     fontFamily: 'Inter',
-    fontSize: '1rem',
+    fontSize: '0.875rem',
     fontWeight: '400',
   },
 }
@@ -57,8 +57,8 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           fontFamily: 'Inter',
-          fontSize: '1rem',
-          fontWeight: '700',
+          fontSize: '0.875rem',
+          fontWeight: '600',
           span: {
             padding: 0,
           },

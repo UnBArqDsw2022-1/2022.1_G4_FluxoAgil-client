@@ -35,7 +35,6 @@ export interface Course {
 }
 
 export interface Period {
-  credits: number
   courses: Course[]
 }
 
@@ -47,7 +46,7 @@ export interface Recommendation {
 export interface RecommendationStore {
   academicHistory: AcademicHistory | null
   options: RecommendationOptions
-  recommendation: Recommendation | null
+  recommendation: Recommendation
 }
 
 export type RootState = ReturnType<typeof store.getState>

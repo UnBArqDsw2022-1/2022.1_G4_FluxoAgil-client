@@ -4,15 +4,18 @@ import {
   AcademicHistory,
   OptionalCourse,
   RecommendationStore,
+  Recommendation,
   RootState,
 } from '@/types'
+// eslint-disable-next-line import/extensions
+import RecommendationExample from '../assets/RecommendationExample.json' assert { type: 'JSON' }
 
 const initialState: RecommendationStore = {
   academicHistory: null,
   options: {
     selectedOptionalCourses: [],
   },
-  recommendation: null,
+  recommendation: RecommendationExample,
 }
 
 export const recommendationSlice = createSlice({
@@ -27,6 +30,9 @@ export const recommendationSlice = createSlice({
       action: PayloadAction<OptionalCourse[]>
     ) => {
       state.options.selectedOptionalCourses = action.payload
+    },
+    getRecommendation: (state, action: PayloadAction<Recommendation>) => {
+      state.recommendation = action.payload
     },
     resetRecommendation: () => initialState,
   },
@@ -48,3 +54,6 @@ export const selectSelectedOptionalCourses = (state: RootState) =>
 
 export const selectRecommendationOptions = (state: RootState) =>
   state.recommendation.options
+
+export const selectRecommendation = (state: RootState) =>
+  state.recommendation.recommendation
